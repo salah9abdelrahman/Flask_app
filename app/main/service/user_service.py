@@ -1,10 +1,12 @@
 from app.main import db
+from app.main.config import PAGINATION_NUMBER
 from app.main.model.user import UserModel
 
 
 def save_new_user(data):
     user = UserModel.query.filter_by(email=data['email']).first()
-    if user:
+    user_by_username = UserModel.query.filter_by(username=data['username']).first()
+    if user or user_by_username:
         response_object = {
             'status': 'fail',
             'message': 'User already exists. Please Log in.',
@@ -47,12 +49,17 @@ def generate_token(user):
         return response_object, 401
 
 
-def get_all_users():
-    return UserModel.query.all()
+def get_all_users_paginated(page=1):
+    return UserModel.query.paginate(page, PAGINATION_NUMBER, error_out=False)
 
 
 def get_a_user(_id):
     return UserModel.query.filter_by(id=_id).first()
+
+
+def user_has_card_list(card_list_id, user_id):
+    return (UserModel.query.filter(UserModel.card_lists.any(id=card_list_id))).filter_by(id=user_id).first()
+
 
 
 def save_changes(data):

@@ -19,12 +19,9 @@ def login_required(func):
 def admin_token_required(func):
     @functools.wraps(func)
     def decorated(*args, **kwargs):
-        print(request)
         data, status = Auth.get_logged_in_user(request)
         token = data.get('data')
-        print('nani')
         print(token)
-
         if not token:
             return data, status
 

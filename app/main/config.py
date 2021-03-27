@@ -3,7 +3,7 @@ import os
 postgres_local_base = 'postgresql://salah:1324@localhost/irithm_task'
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-
+PAGINATION_NUMBER = 20
 
 class Config:
     SECRET_KEY = os.getenv('SECRET_KEY', 'our_secret_key')

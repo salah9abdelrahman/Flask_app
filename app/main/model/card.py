@@ -10,12 +10,13 @@ class CardModel(db.Model):
 
     card_list_id = db.Column(db.Integer, db.ForeignKey('card_list.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    comments = db.relationship('CommentModel', backref='card', lazy='dynamic')
+    comments = db.relationship('CommentModel', backref='card', lazy='dynamic', cascade='all,delete')
 
     def json(self):
         return {
             'id': self.id,
             'title': self.title,
             'description': self.description,
+            'card_list_id': self.card_list_id,
+            'comments': [comment.json() for comment in self.comments]
         }
-

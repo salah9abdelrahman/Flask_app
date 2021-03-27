@@ -41,7 +41,7 @@ class UserModel(db.Model):
         return {
             'id': self.id,
             'email': self.email,
-            'role_id': self.role_id
+            'username': self.username
         }
 
     @staticmethod

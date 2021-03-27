@@ -92,3 +92,5 @@ class Auth:
         response_object, status = Auth.get_logged_in_user(new_request)
         print(response_object)
         return response_object['data']['user_id']
+
+

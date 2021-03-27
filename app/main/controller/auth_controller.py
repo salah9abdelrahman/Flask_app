@@ -3,9 +3,25 @@ from flask_restplus import Resource
 
 from app.main.service.auth_service import Auth
 from ..util.dto import AuthDto
+from ..service.user_service import save_new_user
+from app.main.util.dto import UserDto
 
 api = AuthDto.api
 _user_auth = AuthDto.user_auth
+
+_user = UserDto.user
+
+
+@api.route('/register')
+class Register(Resource):
+
+    @api.response(201, 'User successfully created.')
+    @api.doc('create a new user')
+    @api.expect(_user, validate=True)
+    def post(self):
+        """Creates a new User """
+        data = request.json
+        return save_new_user(data=data)
 
 
 @api.route('/login')
