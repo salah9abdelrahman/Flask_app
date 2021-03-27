@@ -17,6 +17,9 @@ Apply the migration script to the database by using the upgrade command
 ``` python manage.py db upgrade ```
 create roles: Admin, Member
 
+#### install packages
+```pip install -r requirements.txt```
+
 ### To Run application:
 ```python manage.py run```
 
