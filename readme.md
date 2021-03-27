@@ -19,7 +19,8 @@ Apply the migration script to the database by using the upgrade command
 ### To Run application:
 ```python manage.py run```
 
-
+#### see swagger
+[http://127.0.0.1:5000/]
 
 
 ### To run tests
