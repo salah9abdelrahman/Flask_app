@@ -27,4 +27,4 @@ Apply the migration script to the database by using the upgrade command
 
 ### Database design
 
-[er-digram.png](diagram.png)
+[er-digram.png](er-digram.png)
