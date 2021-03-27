@@ -23,6 +23,8 @@ Apply the migration script to the database by using the upgrade command
 
 
 ### To run tests
-python manage.py test
+```python manage.py test```
 
 ### Database design
+
+[er-digram.png](diagram.png)
